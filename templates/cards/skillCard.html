@@ -1,0 +1,218 @@
+{% load static %}
+<section class="stats-section skill">
+    <img class="img img-responsive skill__logo" src="{% static 'imgs/testBulb.svg' %}" alt="SQL">
+    <div class="skill__intro">
+        <h1 class="skill__title">SQL</h1>
+        <span class="skill__category">Query Language</span>
+    </div>
+    <span class="skill__rank skill--placer skill--gold">1</span>
+    <span class="skill__previous-rank ">
+        <i class="mdi mdi-18px mdi-checkbox-blank-circle"></i>
+    </span>
+    <div class="performance-numbers performance-numbers--jobs">
+        <div class="performance-numbers__header">
+            <span class="performance-numbers__count">18860</span>
+            <span class="performance-numbers__notation performance-numbers__notation--jobs">-914</span>
+        </div>
+        <span class="performance-numbers__label">Active Jobs</span>
+    </div>
+    <div class="performance-numbers performance-numbers--companies performance-numbers--after">
+        <div class="performance-numbers__header">
+        <span class="performance-numbers__count">4486</span>
+        <span class="performance-numbers__notation performance-numbers__notation--companies">-122</span>
+        </div>
+        <span class="performance-numbers__label">Companies</span>
+    </div>
+    <div class="performance-numbers performance-numbers--locations performance-numbers--after">
+        <div class="performance-numbers__header">
+            <span class="performance-numbers__count">827</span>
+            <span class="performance-numbers__notation performance-numbers__notation--locations">-10</span>
+        </div>
+        <span class="performance-numbers__label">Locations</span>
+    </div>
+</section>
+
+<style>
+    .skill {
+        display: flex;
+    }
+    .stats-section {
+        border-radius: 16px;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        box-shadow: 10px 10px 16px rgb(91 99 146 / 20%);
+        height: 100%;
+        margin-bottom: 24px;
+        padding: 32px;
+        padding-top: 32px;
+        padding-right: 32px;
+        padding-bottom: 32px;
+        padding-left: 32px;
+    }
+	.skill__intro {
+		height: 60px;
+		margin-right: 24px;
+		margin-left: 1rem;
+		margin-top: 1rem;
+	}
+	.skill__rank {
+		background-color: #1f5afe;
+		border-radius: 8px;
+		color: #fff;
+		font-size: 24px;
+		line-height: 52px;
+		margin-right: 16px;
+		text-align: center;
+		width: 48px;
+	}
+	.skill__title {
+		flex: 1;
+		font-size: 24px;
+		font-weight: 400;
+		line-height: 48px;
+		margin-top: 0px;
+		margin-right: 24px;
+		margin-bottom: 0px;
+		margin-left: 0px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.performance-numbers {
+		margin-left: 12px;
+		margin-right: 12px;
+		padding-top: 4px;
+		text-align: center;
+	}
+	.performance-numbers__count {
+		color: #4e5166;
+		display: block;
+		font-size: 24px;
+		margin-bottom: 4px;
+		white-space: nowrap;
+	}
+	.performance-numbers__notation {
+		font-size: 18px;
+		margin-left: 6px;
+	}
+	.performance-numbers__notation--locations {
+		color: #f80;
+	}
+	.performance-numbers__notation--companies, .performance-numbers__notation--jobs {
+		color: #1f5afe;
+	}
+	.skillset__container {
+		border: 1px solid #eaccff;
+		border-top-width: 1px;
+		border-right-width: 1px;
+		border-bottom-width: 1px;
+		border-left-width: 1px;
+		border-top-style: solid;
+		border-right-style: solid;
+		border-bottom-style: solid;
+		border-left-style: solid;
+		border-top-color: rgb(234, 204, 255);
+		border-right-color: rgb(234, 204, 255);
+		border-bottom-color: rgb(234, 204, 255);
+		border-left-color: rgb(234, 204, 255);
+		border-image-source: initial;
+		border-image-slice: initial;
+		border-image-width: initial;
+		border-image-outset: initial;
+		border-image-repeat: initial;
+		border-radius: 8px;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		border-bottom-right-radius: 8px;
+		border-bottom-left-radius: 8px;
+		display: flex;
+		flex: 1 1 0;
+		flex-grow: 1;
+		flex-shrink: 1;
+		flex-basis: 0px;
+		height: 58px;
+		margin-bottom: 16px;
+		padding: 12px 16px;
+		padding-top: 12px;
+		padding-right: 16px;
+		padding-bottom: 12px;
+		padding-left: 16px;
+	}
+	.search-tags {
+		line-height: 0;
+		list-style: none;
+		list-style-position: initial;
+		list-style-image: initial;
+		list-style-type: none;
+		margin: 0;
+		margin-top: 0px;
+		margin-right: 0px;
+		margin-bottom: 0px;
+		margin-left: 0px;
+		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		padding: 0;
+	}
+	.search-tags li.search-tag--bordered-2px {
+		border-width: 2px!important;
+		border-top-width: 2px;
+		border-right-width: 2px;
+		border-bottom-width: 2px;
+		border-left-width: 2px;
+		line-height: 26px;
+		padding: 2px 10px 0;
+		padding-top: 2px;
+		padding-right: 10px;
+		padding-bottom: 0px;
+		padding-left: 10px;
+	}
+	.search-skill {
+		color: #9e1bfe!important;
+	}
+	.search-tags li {
+		background-color: #fff;
+		border: 1px solid #b8bbcc;
+		border-radius: 8px;
+		color: #3e404d;
+		cursor: pointer;
+		display: inline-block;
+		line-height: 28px;
+		margin-bottom: 8px;
+		margin-right: 8px;
+		max-width: 100%;
+		overflow: hidden;
+		padding: 2px 12px 0;
+		position: relative;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.search-skill--bordered {
+		border: 1px solid #eaccff!important;
+		border-top-width: 1px;
+		border-right-width: 1px;
+		border-bottom-width: 1px;
+		border-left-width: 1px;
+		border-top-style: solid;
+		border-right-style: solid;
+		border-bottom-style: solid;
+		border-left-style: solid;
+		border-top-color: rgb(234, 204, 255);
+		border-right-color: rgb(234, 204, 255);
+		border-bottom-color: rgb(234, 204, 255);
+		border-left-color: rgb(234, 204, 255);
+		border-image-source: initial;
+		border-image-slice: initial;
+		border-image-width: initial;
+		border-image-outset: initial;
+		border-image-repeat: initial;
+	}
+	.search-skill--highlighted {
+		background-color: #eaccff!important;
+	}
+    *, :after, :before {
+        box-sizing: inherit;
+    }
+</style>

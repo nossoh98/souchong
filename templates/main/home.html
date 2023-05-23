@@ -1,0 +1,268 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Home Page{% endblock title %}
+{% block content %}
+<body>
+   
+
+<div class="jumbotron">
+   <div class="jumbotron__container">
+      <div class="jumbotron__intro">
+         <h1 class="homePageBodyFont bold">취준에 데이터를 더하다</h1>
+         <div class="search-form" id="search-stuff-div">
+            <span class="search-form__placeholder" data-with-tags="+ Add More">Search for</span>
+            <ul class="search-form__placeholder-items" id="items">
+               <li class='rotate-items'><p class="homePageBodyFont">회사</p></li>
+               <li class='rotate-items'><p class="homePageBodyFont">기술스택</p>
+               </li>
+               <li class='rotate-items'><p class="homePageBodyFont">키워드</p></li>
+            </ul>
+            <label>
+               <form action="{% url 'chart:searchResult' %}">
+                  <input class="search-form__input" type="text" autocomplete="off" 
+                           id="search-stuff", name="skill" >
+               </form>
+            </label>
+            <button type="button" class='search-form__submit'>
+               <img src="{% static 'imgs/search-icon.jpg' %}">
+            </button>
+         </div>
+         <div class="jumbotron__bulb">
+            <div class="bulb">
+               <img src="{% static 'imgs/bulb_2.png' %}">
+            </div>
+            <div class="bulb-shadow" >
+               <img src="{% static 'imgs/bulb-shadow.svg' %}" alt="">
+            </div>
+         </div>
+      </div>
+      
+      
+      
+   </div> 
+</div>
+</body>
+<style>
+   body {
+      overflow-x: hidden;
+   }
+   .jumbotron {
+      color: #fff;
+      padding: 180px 0 800px;
+      position: relative;
+   }
+   *, ::after, ::before {
+      box-sizing: border-box;
+   }
+   .jumbotron:before {
+		background: transparent linear-gradient(0deg,#30b1f2,#1f5afe 49%,#140f9f) 0 0 no-repeat padding-box;
+		border-bottom-left-radius: 50%;
+		border-bottom-right-radius: 50%;
+		bottom: 0;
+		content: "";
+		left: -64%;
+		position: absolute;
+		right: -64%;
+		top: -110px;
+      z-index: -1;
+	}
+   .jumbotron__container {
+      display: flex;
+      margin: 0 auto;
+      max-width: 1000px;
+      padding: 0 15px;
+      position: relative;
+      width: 100%;
+   }
+   .jumbotron__intro {
+      max-width: 673px;
+   }
+   .jumbotron__bulb {
+      position: absolute;
+      right: -90px;
+      top: -130px;
+   }
+   .bulb {
+      animation: bulbFloat 5s ease-in-out infinite;
+      margin-bottom: 30px;
+   }
+   @keyframes bulbFloat {
+      0% { transform :  translateY(0px) ;}
+      50% { transform : translateY(20px) ;}
+      100% { transform : translateY(0px) ;}
+   }
+   .bulb-shadow {
+      animation: shadowScaling 5s ease-in-out infinite;
+      margin-left: 2%;
+      width: 68%;
+   }
+   @keyframes shadowScaling {
+      0% { transform :  scale(0.6) ;}
+      50% { transform : scale(0.8) ;}
+      100% { transform : scale(0.6) ;}
+   }
+   .search-form {
+      transition: transform  .3s;
+      z-index: 10001;
+   }
+   .search:target {
+      transform : scale(1.5);
+      display: none;
+   }
+   .search-form {
+      background-color: #fff;
+      border-radius: 40px;
+      box-shadow: 5px 5px 40px rgb(31 90 254 / 21%);
+      color: #3e404d;
+      display: flex;
+      height: 70px;
+      line-height: 70px;
+      margin: 12px auto 22px;
+      padding: 0 36px;
+      position: relative;
+      width: 90%;
+      z-index: 1;
+  }
+  .search-form__placeholder {
+      font-size: 20px;
+   }
+   .search-form__placeholder-items {
+      display: inline-block;
+      list-style: none;
+      margin-left: 10px;
+      margin-top: 3px;
+      padding: 0;
+      font-size: 20px;
+   }
+   .rotate-items{
+      position: absolute;
+      opacity: 0;
+      -moz-opacity: 0;
+      filter: alpha(opacity=0)
+   }
+   .rotate-items:nth-child(1){
+      -webkit-animation:   rotate 15s 0s infinite linear;
+      animation:           rotate 15s 0s infinite linear;
+      color: green;
+   }
+   .rotate-items:nth-child(2){
+      -webkit-animation:   rotate 15s 5s infinite linear;
+      animation:           rotate 15s 5s infinite linear;
+      color: red;
+   }
+   .rotate-items:nth-child(3){
+      -webkit-animation:   rotate 15s 10s infinite linear;
+      animation:           rotate 15s 10s infinite linear;
+      color: blue;
+   }
+   @-webkit-keyframes "rotate" {
+      0% {
+        opacity: 0;
+      }
+      2% {
+        opacity: 1;
+      }
+      31% {
+        opacity: 1;
+      }
+      33% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+     }
+     
+      @keyframes "rotate" {
+      0% {
+        opacity: 0;
+      }
+      2% {
+        opacity: 1;
+      }
+      31% {
+        opacity: 1;
+      }
+      33% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+   }
+   .search-form__input:not(.search-form__input--mobile) {
+      background-color: transparent;
+      border: none;
+      color: #4e5166;
+      font-size: 20px;
+      outline: inherit;
+      width: 100%;
+      z-index: 1;
+   }
+
+   .search-form:focus-within{
+      animation : width-focus 0.5s ease-in-out 1;
+      animation-fill-mode: forwards;
+      transform-origin: left;
+   }
+   .search-form:not(:focus-within){
+      animation: width-out 0.5s ease-in-out 1;
+      animation-fill-mode:forwards;
+      transform-origin: left;
+   }
+   @keyframes width-focus{
+      0% { width : 90%;}
+      100% { width : 120%;}
+   }
+   @keyframes width-out{
+      0% { width : 120%;}
+      100% { width : 90%;}
+   }
+   .search-form__submit{
+      background: 0 0;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      position: absolute;
+      right: -2px;
+      top: -4px;
+      margin-right: 10px;
+   }
+   button, input {
+      overflow: visible;
+   }
+   .title {
+      fill-rule: evenodd;
+      fill: #3e404d;
+   }
+   h1 {
+      display: block;
+      font-size: 4em;
+      margin-block-start: 0.67em;
+      margin-block-end: 0.67em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+   }
+   *, :after, :before {
+      box-sizing: inherit;
+   }
+   
+</style>
+<script>
+      var inputBox = document.getElementById('search-stuff');
+      // some action
+      inputBox.addEventListener('focus', function() {
+         console.log("inputBox")
+         document.getElementById('items').style.visibility='hidden';
+      })
+      inputBox.addEventListener('focusout', function() {
+         console.log("inputBox")
+         document.getElementById('items').style.visibility='visible';
+      })
+      var inputBoxDiv = document.getElementById('search-stuff-div')
+      inputBoxDiv.addEventListener('focusout'), function(){
+         inputBoxDiv.style.width = 130
+      }
+</script>
+{% endblock  %}

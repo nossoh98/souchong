@@ -1,0 +1,104 @@
+{% load static %}
+
+<!-- Header -->
+<div class="shadow-sm d-flex flex-column flex-lg-row p-3 px-md-4 mb-3 text-white">
+   <!-- MEDIUM+ SCREENS -->
+   <div class="d-none d-md-flex flex-row my-auto flex-grow-1 align-items-center ">
+      <h5 class="mr-3 font-weight-normal justify-content-start">
+         {% if request.resolver_match.view_name == "home" %}
+         <a class="headerLogoFont bold" style="text-decoration: none; color:white" href="{% url 'home' %}">
+            JobSight
+         </a>
+         {% else %}
+         <a class="headerLogoFont bold" style="text-decoration: none; color:blue" href="{% url 'home' %}">
+            JobSight
+         </a>
+         {% endif %}
+      </h5>
+      {% comment %} <form class="search-bar justify-content-start">
+         <input type="text" class="form-control" name="q" id="id_q_large" placeholder="Search...">
+      </form> {% endcomment %}
+
+      <div class="d-flex flex-row-reverse flex-grow-1">
+            {% if request.user.is_authenticated %}
+               <div class="dropdown dropleft show p-2">
+                  <div class="d-flex flex-row">
+                     <div class="btn-group dropleft">
+                        <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{request.user.profile_image.url}}" alt="codingwithmitch logo" width="40" height="40">
+                        <div class="dropdown-menu" aria-labelledby="id_profile_links">
+                           <a class="mx-2 dropdown-item" href="{% url 'account:view' user_id=request.user.id %}">내 계정</a>
+                           <a class="mx-2 dropdown-item" href="{% url 'logout' %}">로그아웃</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <a class="mx-2 btn btn-primary shadow-none" href="{% url 'chart:top100Skills' %}">
+                  <p class="headerNavFont medium">
+                     인사이트
+                  </p> 
+               </a>
+            {% else %}
+               <a class="mx-2 btn btn-primary shadow-none" href="{% url 'login' %}">
+                  <p class="headerNavFont medium">로그인</p> 
+               </a>
+               <a class="mx-2 btn btn-primary shadow-none" href="{% url 'register' %}">
+                  <p class="headerNavFont medium">회원가입</p> 
+               </a>
+               <a class="mx-2 btn btn-primary shadow-none" href="{% url 'chart:top100Skills' %}">
+                  <p class="headerNavFont medium">
+                     인사이트
+                  </p> 
+               </a>
+            {% endif %} 
+      </div>
+   </div>
+   <!-- END MEDIUM+ SCREENS -->
+
+   <!-- SMALL SCREENS -->
+   <div class="d-flex d-md-none flex-column my-auto align-items-center">
+      <h5 class="font-weight-normal">
+      <a class="p-2 text-dark" href="{% url 'home' %}">JobSight</a>
+      </h5>
+      <form class="search-bar justify-content-start" >
+         <input type="text" class="form-control" name="q" id="id_q_small" placeholder="Search...">
+      </form>
+      <div class="d-flex flex-row-reverse flex-grow-1">
+         <nav class="">
+            {% if request.user.is_authenticated %}
+            <div class="dropdown dropleft p-2 mt-2">
+               <div class="d-flex flex-row">
+                  <div class="btn-group dropleft">
+                     <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{request.user.profile_image.url}}" alt="codingwithmitch logo" width="40" height="40">
+                     <div class="dropdown-menu" aria-labelledby="id_profile_links">
+                        <a class="dropdown-item" href="#">내 계정</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">로그아웃</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            {% else %}
+               <a class="mx-2 btn btn-primary shadow-none" href="{% url 'login' %}">
+                  <p class="headerNavFont medium">로그인</p> 
+               </a>
+               <a class="mx-2 btn btn-primary shadow-none" href="{% url 'register' %}">
+                  <p class="headerNavFont medium">회원가입</p> 
+               </a>
+               <a class="mx-2 btn btn-primary shadow-none" href="#">
+                  <p class="headerNavFont medium">인사이트</p> 
+               </a>
+            {% endif %}   
+         </nav>
+        </div>
+   </div>
+   <!-- END SMALL SCREENS -->
+</div>
+
+
+
+<style>
+
+</style>
+
+
+
+

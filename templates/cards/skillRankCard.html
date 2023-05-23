@@ -1,0 +1,161 @@
+{% load static %}
+<section class="stats-section skill">
+    <span class="skill__rank skill--placer skill--gold">{{ rank }}</span>
+    <img class="img img-responsive skill__logo" src="{% static 'imgs/testBulb.svg' %}" alt="SQL">
+    <div class="skill__intro">
+        <h1 class="skill__title homePageBodyFont">
+        {% if rank == 1 %} 🥇
+        {% elif rank == 2 %} 🥈
+        {% elif rank == 3 %} 🥉
+        {% endif %}
+       {{ skillName }}</h1>
+        {% comment %} <span class="skill__category">Query Language</span> {% endcomment %}
+    </div>
+    <span class="skill__previous-rank ">
+        {% comment %} <i class="mdi mdi-18px mdi-checkbox-blank-circle"></i> {% endcomment %}
+    </span>
+    <div class="performance-numbers performance-numbers--jobs" style="min-width: 109.641px;">
+        <div class="performance-numbers__header">
+            <span class="performance-numbers__count homePageBodyFont">{{ skillCount }}</span>
+            <span class="performance-numbers__notation performance-numbers__notation--jobs homePageBodyFont">0</span>
+        </div>
+        <span class="performance-numbers__label homePageBodyFont">Active Jobs</span>
+    </div>
+    <div class="performance-numbers performance-numbers--companies performance-numbers--after">
+        <div class="performance-numbers__header">
+        <span class="performance-numbers__count homePageBodyFont">{{ companyCount }}</span>
+        <span class="performance-numbers__notation performance-numbers__notation--companies">0</span>
+        </div>
+        <span class="performance-numbers__label homePageBodyFont">Companies</span>
+    </div>
+    <div class="performance-numbers performance-numbers--locations performance-numbers--after">
+        <a class="btn btn-primary " href="{% url 'chart:skillDetail' skill=skillName %}">
+        {% comment %} <a class="btn btn-primary " href="/chart/skillDetailTest/{{ skill }}"> {% endcomment %}
+            <span class="headerNavFont medium">Info</sp> 
+        </a>
+        
+    </div>
+</section>
+
+<style>
+    .skill__title {
+        line-height: 32px;
+    }
+    .skill__title {
+        flex: 1;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 48px;
+        margin: 0 24px 0 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .skill__intro {
+        flex: 1;
+        overflow: hidden;
+    }
+    .skill__logo {
+        margin-right: 16px;
+        max-height: 48px;
+        max-width: 48px;
+        -o-object-fit: contain;
+        object-fit: contain;
+    }
+    i {
+        font-style: italic;
+    }
+    .skill__previous-rank {
+        color: #70748c;
+        line-height: 44px;
+        margin-right: 24px;
+    }
+    .skill__rank .skill--placer {
+        position: relative;
+    }
+    .skill>* {
+        height: 48px;
+    }
+    .skill__rank {
+        background-color: #1f5afe;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 24px;
+        line-height: 52px;
+        margin-right: 16px;
+        text-align: center;
+        width: 48px;
+    }
+    .skill {
+        border-top: 1px solid #d5dfe8;
+        height: 120px;
+        margin: 0 auto;
+        padding: 24px 0;
+        width: calc(100% - 64px);
+    }
+    .skill {
+        display: flex;
+    }
+    .skill:hover{
+        animation: scaleCard 0.2s ease-in-out 1;
+        animation-fill-mode:forwards;
+        transform-origin: top;
+    }
+    @keyframes scaleCard {
+        0% { transform : scaleY(1) ;}
+      100% { transform : scaleY(1.1) ;}
+    }
+    *, :after, :before {
+        box-sizing: inherit;
+    }
+    div {
+        display: block;
+    }
+    section {
+        display: block;
+    }
+    element.style {
+        min-width: 109.641px;
+    }
+    .performance-numbers {
+        margin-left: 12px;
+        margin-right: 12px;
+        padding-top: 4px;
+        text-align: center;
+    }
+    .performance-numbers__header {
+        display: flex;
+    }
+    .performance-numbers__header :first-child {
+        margin-left: auto;
+    }
+    .performance-numbers__count {
+        color: #4e5166;
+        display: block;
+        font-size: 24px;
+        margin-bottom: 4px;
+        white-space: nowrap;
+    }
+    .performance-numbers__header :last-child {
+        margin-right: auto;
+    }
+    .performance-numbers__notation--companies, .performance-numbers__notation--jobs {
+        color: #1f5afe;
+    }
+    .performance-numbers__notation {
+        font-size: 18px;
+        margin-left: 6px;
+    }
+    .performance-numbers__label {
+        color: #898ca3;
+        display: block;
+        font-size: 12px;
+        font-weight: 300;
+    }
+    .container-fluid p {
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 70px;
+        margin: 0 auto 0 16px;
+    }
+</style>

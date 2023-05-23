@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Icons"  rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'cropperjs/dist/cropper.min.css' %}">
+	{% comment %} Font {% endcomment %}
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Carter+One&family=Jua&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+{% include 'main/snippets/base_css.html' %}
+{% include 'main/snippets/base_js.html' %}
+{% include 'main/snippets/header.html' %}
+
+
+
+<!-- Body -->
+<div class="container" id="id_loading_spinner" style="display: none;">
+	<div class="d-flex flex-row mx-auto flex-grow-1 justify-content-center">
+		<div class="spinner-border text-primary" role="status">
+			<span class="sr-only"></span>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+	.main{
+		min-height: 100vh;
+		height: 100%;
+	}
+</style>
+<div class="main">
+	<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+	{% block scripts %}	{% endblock scripts %}
+	{% block content %}	{% endblock content %}
+</div>
+<!-- End Body -->
+
+{% include 'main/snippets/footer.html' %}
+
+{% comment %} <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script> {% endcomment %}
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="{% static 'cropperjs/dist/cropper.min.js' %}"></script>
+<script type="text/javascript">
+	function displayLoadingSpinner(isDisplayed){
+		var spinner = document.getElementById("id_loading_spinner")
+		if(isDisplayed){
+			spinner.style.display = "block"
+		}
+		else{
+			spinner.style.display = "none"
+		}
+	}
+</script>
+</body>
+</html>
+
+<style>
+	a{
+		text-decoration-line: none;
+	}
+</style>

@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% block title %}Login{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}{{form|crispy}}
+    <p>
+        이미 계정이 있을 경우 <a href="/sign_up">로그인</a>
+    </p>
+    <p>
+        <button type="submit" class="btn btn-success">등록</button>
+    </p>
+</form>
+{% endblock %}

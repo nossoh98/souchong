@@ -1,0 +1,553 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}SkillDetail{% endblock title %}
+{% block content %}
+
+<body>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<main>
+    <div class="container-fluid homePageBodyFont">
+        <section class="stats-section skill">
+            <img class="img img-responsive skill__logo" src="{% static 'imgs/testBulb.svg' %}" alt="SQL">
+            <div class="skill__intro" style="width: 1200px">
+                <h1 class="skill__title">{{ skillName }}</h1>
+                <span class="skill__category">SQL 설명</span>
+            </div>
+            <span class="skill__rank skill--placer skill--gold">1</span>
+            <span class="skill__previous-rank ">
+                <i class="mdi mdi-18px mdi-checkbox-blank-circle"></i>
+            </span>
+            <div class="performance-numbers performance-numbers--jobs">
+                <div class="performance-numbers__header">
+                    <span class="performance-numbers__count">{{ skillCount }}</span>
+                    <span class="performance-numbers__notation performance-numbers__notation--jobs">-914</span>
+                </div>
+                <span class="performance-numbers__label">모집중인 공고</span>
+            </div>
+            <div class="performance-numbers performance-numbers--companies performance-numbers--after">
+                <div class="performance-numbers__header">
+                <span class="performance-numbers__count">{{ companyCount }}</span>
+                <span class="performance-numbers__notation performance-numbers__notation--companies">-122</span>
+                </div>
+                <span class="performance-numbers__label">회사 수</span>
+            </div>
+            <div class="performance-numbers performance-numbers--locations performance-numbers--after">
+                <div class="performance-numbers__header">
+                    <span class="performance-numbers__count">827</span>
+                    <span class="performance-numbers__notation performance-numbers__notation--locations">-10</span>
+                </div>
+                <span class="performance-numbers__label">위치</span>
+            </div>
+        </section>
+        <section class="stats-section demand-over-time">
+            <div class="stats-section__summary">
+                <div class="stats-section__intro">
+                    <h3 class="stats-section__title">공고 수의 변화</h3>
+                    <p class="stats-section__subtitle">지난 2달간의 변화</p>
+                </div>
+                <div class="performance-numbers">
+                    <span class="performance-numbers__count">18860</span>
+                    <span class="performance-numbers__label">모집중인 공고</span>
+                </div>
+                <div class="performance-numbers stats-section__performance">
+                    <span class="performance-numbers__count performance-numbers__count--change">
+                    <span>-8680</span>
+                    <span>-31.5 %</span>
+                    </span>
+                    <span class="performance-numbers__label">2달간 변화량/변화율</span>
+                 </div>
+            </div>
+			<div>
+				<canvas id="myChart"></canvas>
+			</div>
+			<script>
+				var ctx = document.getElementById("myChart").getContext('2d');
+				var myChart = new Chart(ctx, {
+					type: 'bar',
+					data: {
+						labels: ["이", "재", "찬", "화", "이", "팅"],
+						datasets: [{
+							data: [12, 19, 3, 5, 2, 3],
+							backgroundColor: 'rgba(255, 99, 132, 0.2)',
+							borderWidth: 1
+						}]
+					},
+					options: {
+						maintainAspectRatio: false, 
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero:true
+								}
+							}]
+						}
+					}
+				});
+				</script>
+        </section>
+
+
+        <div class = "row">
+			<div class="col-xl-6">
+				<section class="stats-section related-skills">
+					<h3 class="stats-section__title">연관된 다른 기술 스택</h3>
+					<p class="stats-section__subtitle">어떤 스택이 -SQL-과 가장 밀접한 관계를 유지하는가?</p>
+					<section class="progress-item">
+					<span class="progress-item__rank">1</span>
+					<div class="progress-item__intro">
+					<h5 title="Python">{{relatedSkills.0.0}}</h5>
+					
+					</div>
+					<div id="related_skills__1" class="progress-item__graph" data-percentage="31.5"><svg height="16" width="462"><rect rx="8" ry="8" fill="#aaa" height="16" width="430" x="16" y="0"></rect><rect class="progress-active" fill="#333" height="16" width="135.45" rx="8" ry="8" x="16" y="0"></rect></svg></div>
+					<span class="progress-item__percentage">{{relatedSkills.0.1}}%</span>
+					<a class="clip" href="https://jobtensor.com/Python-Jobs" title="https://jobtensor.com/Python-Jobs"><i class="mdi mdi-24px
+												 mdi-link"></i></a>
+					</section>
+					<section class="progress-item">
+					<span class="progress-item__rank">2</span>
+					<div class="progress-item__intro">
+					<h5 title="Cloud">{{relatedSkills.1.0}}</h5>
+					
+					</div>
+					<div id="related_skills__2" class="progress-item__graph" data-percentage="23.2"><svg height="16" width="462"><rect rx="8" ry="8" fill="#aaa" height="16" width="430" x="16" y="0"></rect><rect class="progress-active" fill="#333" height="16" width="99.76" rx="8" ry="8" x="16" y="0"></rect></svg></div>
+					<span class="progress-item__percentage">{{relatedSkills.1.1}}%</span>
+					<a class="clip" href="https://jobtensor.com/Cloud-Jobs" title="https://jobtensor.com/Cloud-Jobs"><i class="mdi mdi-24px
+												 mdi-link"></i></a>
+					</section>
+					<section class="progress-item">
+					<span class="progress-item__rank">3</span>
+					<div class="progress-item__intro">
+					<h5 title="Azure">{{relatedSkills.2.0}}</h5>
+					
+					</div>
+					<div id="related_skills__3" class="progress-item__graph" data-percentage="22.7"><svg height="16" width="462"><rect rx="8" ry="8" fill="#aaa" height="16" width="430" x="16" y="0"></rect><rect class="progress-active" fill="#333" height="16" width="97.61" rx="8" ry="8" x="16" y="0"></rect></svg></div>
+					<span class="progress-item__percentage">{{relatedSkills.2.1}}%</span>
+					<a class="clip" href="https://jobtensor.com/Azure-Jobs" title="https://jobtensor.com/Azure-Jobs"><i class="mdi mdi-24px
+												 mdi-link"></i></a>
+					</section>
+					<section class="progress-item">
+					<span class="progress-item__rank">4</span>
+					<div class="progress-item__intro">
+					<h5 title="Power BI">{{relatedSkills.3.0}}</h5>
+					
+					</div>
+					<div id="related_skills__4" class="progress-item__graph" data-percentage="18.3"><svg height="16" width="462"><rect rx="8" ry="8" fill="#aaa" height="16" width="430" x="16" y="0"></rect><rect class="progress-active" fill="#333" height="16" width="78.69" rx="8" ry="8" x="16" y="0"></rect></svg></div>
+					<span class="progress-item__percentage">{{relatedSkills.3.1}}3%</span>
+					<a class="clip" href="https://jobtensor.com/Power-BI-Jobs" title="https://jobtensor.com/Power-BI-Jobs"><i class="mdi mdi-24px
+												 mdi-link"></i></a>
+					</section>
+					<section class="progress-item">
+					<span class="progress-item__rank">5</span>
+					<div class="progress-item__intro">
+					<h5 title="Agile">{{relatedSkills.4.0}}</h5>
+					
+					</div>
+					<div id="related_skills__5" class="progress-item__graph" data-percentage="16.5"><svg height="16" width="462"><rect rx="8" ry="8" fill="#aaa" height="16" width="430" x="16" y="0"></rect><rect class="progress-active" fill="#333" height="16" width="70.95" rx="8" ry="8" x="16" y="0"></rect></svg></div>
+					<span class="progress-item__percentage">{{relatedSkills.4.1}}%</span>
+					<a class="clip" href="https://jobtensor.com/Agile-Jobs" title="https://jobtensor.com/Agile-Jobs"><i class="mdi mdi-24px
+												 mdi-link"></i></a>
+					</section>
+				</section>
+			</div>
+			<div class="col-xl-6">
+				<section class="stats-section skillsets">
+					<h3 class="stats-section__title">인기 있는 skillset</h3>
+					<p class="stats-section__subtitle">-SQL- 과 가장 어울리는 skillset은?</p>
+					<div class="skillsets-group">
+						<section class="skillset">
+							<div class="skillset__container">
+								<h5>Skillset 1</h5>
+								<ul class="search-tags">
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">{{ skillName }}</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">TSQL</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">SSRS</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">SSIS</li>
+									<li class="search-skill search-tag--more search-tag--no-hover" style="display: none;"></li>
+								</ul>
+							</div>
+							<a class="clip" href="https://jobtensor.com/uk/SQL-SSIS-SSRS-TSQL-Jobs" title="https://jobtensor.com/uk/SQL-SSIS-SSRS-TSQL-Jobs"><i class="mdi mdi-link"></i></a>
+						</section>
+						<section class="skillset">
+							<div class="skillset__container">
+								<h5>Skillset 2</h5>
+								<ul class="search-tags">
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">{{ skillName }}</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">SQL Server</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">TSQL</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">SSIS</li>
+									<li class="search-skill search-tag--more search-tag--no-hover" style="display: none;"></li>
+								</ul>
+							</div>
+							<a class="clip" href="https://jobtensor.com/uk/SQL-SQL-Server-SSIS-TSQL-Jobs" title="https://jobtensor.com/uk/SQL-SQL-Server-SSIS-TSQL-Jobs"><i class="mdi mdi-link"></i></a>
+						</section>
+						<section class="skillset">
+							<div class="skillset__container">
+								<h5>Skillset 3</h5>
+								<ul class="search-tags">
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">{{ skillName }}</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">C#</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">.NET</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">ASP.NET</li>
+									<li class="search-skill search-tag--more search-tag--no-hover" style="display: none;"></li>
+								</ul>
+							</div>
+							<a class="clip" href="https://jobtensor.com/uk/NET-ASP-NET-C#-SQL-Jobs" title="https://jobtensor.com/uk/NET-ASP-NET-C#-SQL-Jobs"><i class="mdi mdi-link"></i></a>
+						</section>
+						<section class="skillset">
+							<div class="skillset__container">
+								<h5>Skillset 4</h5>
+								<ul class="search-tags">
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">{{ skillName }}</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">Python</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">R</li>
+									<li class="search-skill search-tag--bordered-2px search-tag--no-hover search-skill--bordered search-skill--highlighted">SAS</li>
+									<li class="search-skill search-tag--more search-tag--no-hover" style="display: none;"></li>
+								</ul>
+							</div>
+							<a class="clip" href="https://jobtensor.com/uk/Python-R-SAS-SQL-Jobs" title="https://jobtensor.com/uk/Python-R-SAS-SQL-Jobs"><i class="mdi mdi-link"></i></a>
+						</section>
+					</div>
+				</section>
+			</div>
+		</div>
+    </div>
+</main>
+
+<style>
+    .skill {
+        display: flex;
+    }
+    .stats-section {
+        border-radius: 16px;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        box-shadow: 0 0 16px rgb(91 99 146 / 20%);
+        height: 100%;
+        margin-bottom: 24px;
+        padding: 32px;
+        padding-top: 32px;
+        padding-right: 32px;
+        padding-bottom: 32px;
+        padding-left: 32px;
+    }
+	.demand-over-time {
+		padding-right: 12px;
+	}
+	.demand-over-time .stats-section__summary {
+		margin-right: 20px;
+	}
+	.stats-section__summary {
+		display: flex;
+	}
+	.stats-section__intro {
+		flex-grow: 1;
+	}
+	.stats-section__title {
+		color: #494d5e;
+		font-size: 24px;
+		font-weight: 400;
+		line-height: 1;
+		margin: 0 0 8px;
+	}
+	.stats-section__subtitle {
+		color: #898ca3;
+		font-size: 18px;
+		line-height: 24px;
+	}
+	.skill__intro {
+		height: 60px;
+		margin-right: 24px;
+		margin-left: 1rem;
+		margin-top: 1rem;
+	}
+	.skill__rank {
+		background-color: #1f5afe;
+		border-radius: 8px;
+		color: #fff;
+		font-size: 24px;
+		line-height: 52px;
+		margin-right: 16px;
+		text-align: center;
+		width: 48px;
+		height: 55px;
+	}
+	.skill__title {
+		flex: 1;
+		font-size: 24px;
+		font-weight: 400;
+		line-height: 48px;
+		margin-top: 0px;
+		margin-right: 24px;
+		margin-bottom: 0px;
+		margin-left: 0px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.performance-numbers {
+		margin-left: 12px;
+		margin-right: 12px;
+		padding-top: 4px;
+		text-align: center;
+	}
+	.performance-numbers__count {
+		color: #4e5166;
+		display: block;
+		font-size: 24px;
+		margin-bottom: 4px;
+		white-space: nowrap;
+	}
+	.performance-numbers__count--change {
+		color: #1f5afe;
+	}
+	.performance-numbers__notation {
+		font-size: 18px;
+		margin-left: 6px;
+	}
+	.performance-numbers__notation--locations {
+		color: #f80;
+	}
+	.performance-numbers__notation--companies, .performance-numbers__notation--jobs {
+		color: #1f5afe;
+	}
+	.performance-numbers__label {
+		color: #898ca3;
+		display: block;
+		font-size: 12px;
+		font-weight: 300;
+	}
+	.skillset__container {
+		border: 1px solid #eaccff;
+		border-radius: 8px;
+		display: flex;
+		flex: 1 1 0;
+		flex-grow: 1;
+		flex-shrink: 1;
+		flex-basis: 0px;
+		height: 58px;
+		margin-bottom: 16px;
+		padding: 12px 16px;
+		padding-top: 12px;
+		padding-right: 16px;
+		padding-bottom: 12px;
+		padding-left: 16px;
+	}
+	
+	.search-tags {
+		line-height: 0;
+		list-style: none;
+		list-style-position: initial;
+		list-style-image: initial;
+		list-style-type: none;
+		margin: 0;
+		margin-top: 0px;
+		margin-right: 0px;
+		margin-bottom: 0px;
+		margin-left: 0px;
+		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		padding: 0;
+	}
+	.search-tags li.search-tag--bordered-2px {
+		border-width: 2px!important;
+		border-top-width: 2px;
+		border-right-width: 2px;
+		border-bottom-width: 2px;
+		border-left-width: 2px;
+		line-height: 26px;
+		padding: 2px 10px 0;
+		padding-top: 2px;
+		padding-right: 10px;
+		padding-bottom: 0px;
+		padding-left: 10px;
+	}
+	.search-skill {
+		color: #9e1bfe!important;
+	}
+	.search-tags li {
+		background-color: #fff;
+		border: 1px solid #b8bbcc;
+		border-radius: 8px;
+		color: #3e404d;
+		cursor: pointer;
+		display: inline-block;
+		line-height: 28px;
+		margin-bottom: 8px;
+		margin-right: 8px;
+		max-width: 100%;
+		overflow: hidden;
+		padding: 2px 12px 0;
+		position: relative;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.search-skill--bordered {
+		border: 1px solid #eaccff!important;
+		border-top-width: 1px;
+		border-right-width: 1px;
+		border-bottom-width: 1px;
+		border-left-width: 1px;
+		border-top-style: solid;
+		border-right-style: solid;
+		border-bottom-style: solid;
+		border-left-style: solid;
+		border-top-color: rgb(234, 204, 255);
+		border-right-color: rgb(234, 204, 255);
+		border-bottom-color: rgb(234, 204, 255);
+		border-left-color: rgb(234, 204, 255);
+		border-image-source: initial;
+		border-image-slice: initial;
+		border-image-width: initial;
+		border-image-outset: initial;
+		border-image-repeat: initial;
+	}
+	.search-skill--highlighted {
+		background-color: #eaccff!important;
+	}
+	.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 15px;
+		padding-right: 15px;
+		width: 100%;
+	}
+	.container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+		padding: 0 32px;
+		padding-top: 0px;
+		padding-right: 32px;
+		padding-bottom: 0px;
+		padding-left: 32px;
+	}
+	@media (min-width: 1200px)
+	.col-xl-6 {
+    	flex: 0 0 50%;
+    	max-width: 50%;
+	}
+	.progress-item .progress-item__rank {
+		background-color: #ebeefd;
+		border-radius: 8px;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		border-bottom-right-radius: 8px;
+		border-bottom-left-radius: 8px;
+		color: #494d5e;
+		font-size: 24px;
+		margin-right: 20px;
+		min-width: 48px;
+		text-align: center;
+	}
+	.progress-item>* {
+		height: 48px;
+		line-height: 52px;
+	}
+	.progress-item .progress-item__graph {
+		line-height: 58px;
+		min-width: 55%;
+	}
+	.related-skills svg rect.progress-active {
+		fill: #9e1bfe;
+	}
+	.related-skills svg rect {
+		fill: #eaccff;
+	}
+	.progress-item .progress-item__percentage {
+		color: #8e9499;
+		font-size: 16px;
+		margin: 0 12px 0 0;
+		width: 48px;
+	}
+	.progress-item .progress-item__intro span {
+		color: #898ca3;
+		font-size: 12px;
+		font-weight: 200;
+	}
+	.progress-item .progress-item__intro>* {
+		height: auto;
+		line-height: normal;
+	}
+	.progress-item {
+		display: flex;
+		height: 48px;
+		margin-top: 24px;
+	}
+	.progress-item .progress-item__intro h5 {
+		flex: 1;
+		flex-grow: 1;
+		flex-shrink: 1;
+		flex-basis: 0%;
+		max-height: 20px;
+	}
+	.progress-item .progress-item__intro>* {
+		height: auto;
+		line-height: normal;
+	}
+	.progress-item .progress-item__intro {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		height: auto;
+		margin-top: 8px;
+		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+	.progress-item h5 {
+		color: #494d5e;
+		flex: 1;
+		font-size: 16px;
+		font-weight: 400;
+		margin: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.stats-section__subtitle {
+		color: #898ca3;
+		font-size: 18px;
+		line-height: 24px;
+	}
+	h5 {
+		display: block;
+		font-size: 0.83em;
+		margin-block-start: 1.67em;
+		margin-block-end: 1.67em;
+		margin-inline-start: 0px;
+		margin-inline-end: 0px;
+		font-weight: bold;
+	}
+	.skillset__container h5 {
+		color: #494d5e;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 32px;
+		margin: 0 75px 0 0;
+		margin-top: 0px;
+		margin-right: 75px;
+		margin-bottom: 0px;
+		margin-left: 0px;
+		white-space: nowrap;
+	}
+	.row{
+		flex-wrap: nowrap;
+	}
+	main {
+		background-color: #fff;
+		color: #3e404d;
+		padding: 25px 0 40px;
+		padding-top: 25px;
+		padding-right: 0px;
+		padding-bottom: 40px;
+		padding-left: 0px;
+	}
+	*, ::after, ::before {
+		box-sizing: border-box;
+	}
+</style>
+
+
+
+{% endblock %}

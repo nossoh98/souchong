@@ -1,0 +1,120 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Top 100 Skills{% endblock title %}
+{% block content %}
+
+{% comment %} <div class="background">
+</div> {% endcomment %}
+
+<div class="container-fluid">
+    <div class="row justify-content-md-center  p-5">
+        <div class="col-md-auto">
+            <img class="img img-responsive search-terms-icons" src="{% static 'imgs/testBulb.svg' %}" alt="Skills">
+        </div>
+        <div class="col-md-auto">
+            <div class="row">
+                <p class="top100Skills">"{{ searchedSkillName }}" Search result</p>
+            </div>
+            <div class="row">
+                <p class="getJobWithData small">
+                    <span>취준도 "Smart"하게</span> 
+                </p>
+            </div>
+            {% comment %} <p class="top100Skills">{{ skill }}</p> {% endcomment %}
+        </div>
+    </div>
+    <div class="skills-header">
+        <div class="skills-header__rank">
+            <h5 class="homePageBodyFont"> 랭크 </h5>
+        </div>
+        <div class="skills-header__title">
+            <h5 class="homePageBodyFont"> 스킬 </h5>
+        </div>
+        <div class="skills-header__numbers">
+            <h5 class="homePageBodyFont"> 채용공고 수 </h5>
+        </div>
+        <div class="skills-header__companies">
+            <h5 class="homePageBodyFont"> 회사 수 </h5>
+        </div>
+        <div class="skills-header__stats">
+            <h5 class="homePageBodyFont"> Info </h5>
+        </div>
+    </div>
+
+    {% for skill in skills %}
+        {% comment %} {% with rankNum=forloop.counter %} {% endcomment %}
+        <div class="row justify-content-md-center p-1">
+            {% include 'cards/skillRankCard.html' with rank=skill.0 skillName=skill.1 skillCount=skill.2 companyCount=skill.3   %}
+        </div>
+        {% comment %} {% endwith %} {% endcomment %}
+    {% endfor %}
+
+</div>
+
+<style>
+    .skills-header {
+        background-color: #f7f8ff;
+        border-radius: 8px;
+        color: #898ca3;
+        display: flex;
+        height: 46px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .skills-header>* {
+        margin-bottom: auto;
+        margin-top: auto;
+        text-align: center;
+    }
+    .skills-header__rank {
+        min-width: 48px;
+        padding-top: 13px;
+    }
+    .skills-header__title {
+        flex: 1;
+        padding-top: 13px;
+        padding-left: 85px;
+        text-align: left;
+    }
+    .skills-header__numbers {
+        margin-left: 12px;
+        margin-right: 50px;
+        padding-top: 13px;
+    }
+    .skills-header__companies{
+        margin-left: 12px;
+        margin-right: 12px;
+        padding-top: 13px;
+    }
+    .skills-header__stats {
+        margin-left: 16px;
+        min-width: 96px;
+        padding-top: 13px;
+    }
+    .background {
+        background: url("/static/imgs/top100SkillsBackground.png") no-repeat center top;
+        height: 235px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 80%;
+        opacity: 0.5;
+    }
+    .container-fluid p {
+        font-size: 40px;
+        padding-left: 50px;
+        padding-right: 50px;
+        font-weight: 400;
+        line-height: 50px;
+        margin: 20 auto 0 16px;
+    }
+    .container-fluid p span{
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 30px;
+        margin: 20 auto 0 16px;
+    }
+</style>
+
+{% endblock %}
